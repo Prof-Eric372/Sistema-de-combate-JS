@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Combate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Sistema de Combate</h1>
+
+  <div class="arena">
+    <div class="personagem">
+      <h2>Jogador</h2>
+      <div class="barra-vida">
+            <div class="vida" id="player-life"></div>
+        </div>
+      <p id="player-hp">HP: 100</p>
+    </div>
+
+    <div class="personagem inimigo" id ="enemy">
+      <h2>Inimigo</h2>
+      <div class="barra-vida">
+            <div class="vida" id="enemy-life"></div>
+        </div>
+      <p id="enemy-hp">HP: 100</p>
+    </div>
+  </div>
+
+  <button onclick="atacar()">Atacar</button>
+
+  <p id="log"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
