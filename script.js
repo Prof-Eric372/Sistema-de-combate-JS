@@ -9,7 +9,7 @@ let jogoAtivo = true;
 
 function atacar() {
     if (!jogoAtivo) {
-        console.log("O jogo acabou. Reinicie para jogar novamente.");
+        escreverLog("O jogo acabou. Reinicie para jogar novamente.");
         return;
     }
 
@@ -53,7 +53,7 @@ function atualizarTela() {
 function decidirTurno () {
     const sorteio = Math.random ();
     if (sorteio < 0.5) {
-         console.log ("É o turno do joga dor");
+         escreverLog ("É o turno do jogador");
         return "jogador";
     } else {
          console.log ("É o turno do inimigo");
@@ -65,15 +65,15 @@ function decidirTurno () {
 //Função para o ataque do inimigo
 function ataqueInimigo() {
     if (!jogoAtivo) {
-        console.log("O jogo acabou. Reinicie para jogar novamente.");
+        escreverLog("O jogo acabou. Reinicie para jogar novamente.");
         return;
     }
 
     hpJogador -= danoInimigo;
-    console.log("O jogador sofreu " + danoInimigo + " de dano e agora tem " + hpJogador + " de vida");
+    escreverLog("O jogador sofreu " + danoInimigo + " de dano e agora tem " + hpJogador + " de vida");
     if (hpJogador <= 0) {
         hpJogador = 0;
-        console.log("O jogador morreu!");
+        escreverLoggit("O jogador morreu!");
         jogoAtivo = false;
         document.getElementById("btn-reiniciar").style.display = 'inline-block';
     }
@@ -92,14 +92,14 @@ function ataqueInimigo() {
 //Função ataque do jogador
 function ataqueJogador() {
     if (!jogoAtivo) {
-        console.log("O jogo acabou. Reinicie para jogar novamente.");
+        escreverLog("O jogo acabou. Reinicie para jogar novamente.");
         return;
     }
     hpInimigo -= danoJogador;
-    console.log("O inimigo sofreu " + danoJogador + " de dano e agora tem " + hpInimigo + " de vida");
+    escreverLog("O inimigo sofreu " + danoJogador + " de dano e agora tem " + hpInimigo + " de vida");
 if (hpInimigo <= 0) {
         hpInimigo = 0;
-        console.log("Não sobrou nada para o beta!");
+        escreverLog("Não sobrou nada para o beta!");
         jogoAtivo = false;
         document.getElementById("btn-reiniciar").style.display = 'inline-block';
    
@@ -123,8 +123,14 @@ function reiniciar () {
     hpJogador = 100;
     hpInimigo = 100;
     jogoAtivo = true;
+    escreverLog("Jogo reiniciado! Que comece o combate!");
     atualizarTela();
     
  document.getElementById("btn-reiniciar").style.display = 'none';
+}
+ //Função para escrever o log
+ function escreverLog(mensagem) {
+    const log = document.getElementById("log");
+    log.innerText = mensagem;
 }
 
