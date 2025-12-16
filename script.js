@@ -40,12 +40,29 @@ atualizarTela();
 //Função para atualizar tela
 function atualizarTela() {
   
+    // Atualiza texto
     document.getElementById('player-hp').innerText = "HP: " + hpJogador;
     document.getElementById('enemy-hp').innerText = "HP: " + hpInimigo;
 
-    document.getElementById('player-life').style.width = hpJogador + "%";
-    document.getElementById('enemy-life').style.width = hpInimigo + "%";
+    // Atualiza largura da barra de vida
+    const playerLife = document.getElementById('player-life');
+    const enemyLife = document.getElementById('enemy-life');
+
+    playerLife.style.width = hpJogador + "%";
+    enemyLife.style.width = hpInimigo + "%";
+
+    // Altera cor da barra conforme HP
+    playerLife.className = 'vida'; // reset
+    enemyLife.className = 'vida';
+
+    if (hpJogador <= 30) playerLife.classList.add('baixo');
+    else if (hpJogador <= 60) playerLife.classList.add('medio');
+
+    if (hpInimigo <= 30) enemyLife.classList.add('baixo');
+    else if (hpInimigo <= 60) enemyLife.classList.add('medio');
 }
+
+
 
 //Função para reiniciar o jogo
 function reiniciar () {
@@ -53,7 +70,9 @@ function reiniciar () {
     hpInimigo = 100;
     jogoAtivo = true;
     atualizarTela();
+    
+ document.getElementById("btn-reiniciar").style.display = 'none';
 }
 
- document.getElementById("btn-reiniciar").style.display = 'none';
+   
 
