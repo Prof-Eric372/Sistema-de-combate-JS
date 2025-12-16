@@ -9,6 +9,7 @@ let jogoAtivo = true;
 function atacar() {
     if (!jogoAtivo) {
         console.log("O jogo acabou. Reinicie para jogar novamente.");
+        
         return;
     }
 
@@ -18,6 +19,8 @@ if (hpInimigo <= 0) {
         hpInimigo = 0;
         console.log("Não sobrou nada para o beta!");
         jogoAtivo = false;
+        document.getElementById("btn-reiniciar").style.display = 'inline-block';
+   
     }
 
     const inimigo = document.getElementById("enemy");
@@ -43,4 +46,14 @@ function atualizarTela() {
     document.getElementById('player-life').style.width = hpJogador + "%";
     document.getElementById('enemy-life').style.width = hpInimigo + "%";
 }
+
+//Função para reiniciar o jogo
+function reiniciar () {
+    hpJogador = 100;
+    hpInimigo = 100;
+    jogoAtivo = true;
+    atualizarTela();
+}
+
+ document.getElementById("btn-reiniciar").style.display = 'none';
 
